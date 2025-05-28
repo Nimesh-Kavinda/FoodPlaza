@@ -150,10 +150,10 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="col-md-6 text-center">
           <div class="image-slider-container" id="about-image-slider">
-            <img src="./public/img/home/flower_banner_01.jpg" class="image-slider-slide active" alt="Bouquet 1">
-            <img src="./public/img/home/flower_banner_02.jpg" class="image-slider-slide" alt="Bouquet 2">
-            <img src="./public/img/home/flower_banner_03.jpg" class="image-slider-slide" alt="Bouquet 3">
-            <img src="./public/img/home/flower_banner_04.jpg" class="image-slider-slide" alt="Bouquet 4">
+            <img src="./public/img/home/food_banner_01.jpg" class="image-slider-slide active" alt="food 1">
+            <img src="./public/img/home/food_banner_02.jpg" class="image-slider-slide" alt="food 2">
+            <img src="./public/img/home/food_banner_03.jpg" class="image-slider-slide" alt="food 3">
+            <img src="./public/img/home/food_banner_04.jpg" class="image-slider-slide" alt="food 4">
             <div class="image-slider-dots">
               <span class="image-slider-dot active" data-slide="0"></span>
               <span class="image-slider-dot" data-slide="1"></span>
