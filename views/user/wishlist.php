@@ -41,99 +41,35 @@ try {
     <link rel="stylesheet" href="./public/css/main.css">
 </head>
 
-    <style>
-        /* Wishlist Card Styling */
-.card {
-    height: 100%;
-    border: 1px solid #e0e0e0;
-    border-radius: 16px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    background-color: #fff;
-    position: relative;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: #d0d0d0;
-}
-
-.card-img-top {
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.card-body {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.card-text {
-    font-size: 0.9rem;
-    color: #777;
-}
-
-.card .btn {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 8px;
-    transition: all 0.2s;
-}
-
-.card .btn:hover {
-    opacity: 0.9;
-}
-
-    </style>
-
 <body>
-    <div class="page-container">
-        <div class="container">
-            <div class="row content-wrapper">
-                <!-- Sidebar -->
-                <?php include_once('./includes/user_nav.php'); ?>
-
-                <!-- Main Content -->
-                <div class="col-md-9 col-lg-9 content">
-                    <h2 class="section-title">My Wishlist</h2>
-                    <div class="row g-4">
-                        <!-- Example wishlist item card -->
-                        <?php if (empty($wishlist_items)) { ?>
-                            <div class="col-12 text-center">
-                                <div class="alert alert-info text-center" role="alert">
-                                    Your wishlist is empty. Start adding products you love!
-                                </div>
-                                <a href="../shop.php"><button class="btn btn-md text-white py-2 px-3 fw-bold" style="background-color: var(--laflora-secondary);">Add Now</button></a>
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <!-- Sidebar -->
+            <?php include_once('./includes/user_nav.php'); ?>
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-9 ms-auto content py-4">
+                <h2 class="section-title themed-title mb-4">My Wishlist</h2>
+                <div class="row g-4">
+                    <?php if (empty($wishlist_items)) { ?>
+                        <div class="col-12 text-center">
+                            <div class="alert alert-info text-center" role="alert">
+                                Your wishlist is empty. Start adding products you love!
                             </div>
-                        <?php } ?>
-                        <?php foreach ($wishlist_items as $item): ?>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="card h-100 shadow-sm border-0">
-                                    <img src="../../uploads/products/<?= htmlspecialchars($item['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['name']) ?>">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title text-truncate"><?= htmlspecialchars($item['name']) ?></h5>
-                                        <p class="card-text small text-muted mb-2">
-                                            <?= htmlspecialchars($item['category_name'] ?? 'Uncategorized') ?>
-                                        </p>
-                                    </div>
+                            <a href="../shop.php"><button class="btn btn-md text-white py-2 px-3 fw-bold" style="background-color: var(--laflora-secondary);">Add Now</button></a>
+                        </div>
+                    <?php } ?>
+                    <?php foreach ($wishlist_items as $item): ?>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border-0 bg-dark text-light" style="max-width: 320px; min-height: 320px; margin: 0 auto;">
+                                <img src="../../uploads/products/<?= htmlspecialchars($item['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['name']) ?>" style="height: 160px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <h5 class="card-title text-truncate fw-bold text-white mb-2" style="font-size:1rem;"><?= htmlspecialchars($item['name']) ?></h5>
+                                    <p class="card-text small text-accent mb-2" style="font-size:0.95rem;"> <?= htmlspecialchars($item['category_name'] ?? 'Uncategorized') ?> </p>
+                                    <p>Price: <span class="fw-bold text-accent" style="font-size:0.95rem;">Rs <?= number_format($item['price'], 2) ?></span></p>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -141,7 +77,5 @@ try {
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="../../public/js/wishlist.js"></script>
-
 </body>
-
 </html>

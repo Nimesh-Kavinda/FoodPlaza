@@ -49,146 +49,95 @@
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./public/css/main.css">
-    <style>
-        .status-select {
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 0.875rem;
-            background-color: #fff;
-            transition: all 0.3s ease;
-            width: auto;
-            min-width: 160px;
-        }
-        
-        .status-select:hover, .status-select:focus {
-            border-color: #FF69B4;
-            box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.1);
-            outline: none;
-        }
-
-        .view-order-btn {
-            color: #FF69B4 !important;
-            transition: transform 0.2s ease, color 0.2s ease;
-            font-size: 1.1rem;
-        }
-
-        .view-order-btn:hover {
-            transform: scale(1.1);
-            color: #ff1493 !important;
-        }
-
-        .badge {
-            font-weight: 500;
-            padding: 0.5em 0.8em;
-            border-radius: 6px;
-        }
-
-        .table > :not(caption) > * > * {
-            padding: 1rem 0.75rem;
-        }
-
-        .status-update-form {
-            margin: 0;
-        }
-
-        .item-quantity {
-            color: #666;
-            font-size: 0.9em;
-        }
-    </style>
 </head>
 <body>
-    <div class="page-container">
-        <div class="container">
-            <div class="row content-wrapper">
-                <!-- Sidebar -->
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <!-- Sidebar -->
             <?php include('./includes/user_nav.php'); ?>
-
-                <!-- Main Content -->
-                <div class="col-md-9 col-lg-9 content">
-                    <h2 class="section-title">My Orders</h2>
-                    <?php if (isset($success_message)): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars($success_message); ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php endif; ?>
-                        <div class="table-responsive">
-                            <table class="table align-middle table-bordered table-hover">
-                                <thead class="table-light">
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-9 ms-auto content py-4">
+                <h2 class="section-title themed-title mb-4">My Orders</h2>
+                <?php if (isset($success_message)): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo htmlspecialchars($success_message); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-bordered table-hover rounded-4 overflow-hidden themed-table mb-0">
+                            <thead class="table-dark border-bottom border-secondary">
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Update Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (empty($orders)): ?>
                                     <tr>
-                                        <th>Order #</th>
-                                        <th>Date</th>
-                                        <th>Items</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Update Status</th>
-                                        <th>Action</th>
+                                        <td colspan="7" class="text-center text-muted">No orders found</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php if (empty($orders)): ?>
+                                <?php else: ?>
+                                    <?php foreach ($orders as $order): ?>
                                         <tr>
-                                            <td colspan="6" class="text-center">No orders found</td>
+                                            <td class="fw-semibold text-accent">#<?php echo $order['order_id']; ?></td>
+                                            <td class="text-light"><?php echo date('Y-m-d', strtotime($order['order_date'])); ?></td>
+                                            <td>
+                                                <?php
+                                                $products = explode(', ', $order['product_names']);
+                                                foreach ($products as $product) {
+                                                    echo '<div class="mb-1 text-light">' . htmlspecialchars($product) . '</div>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="text-light">Rs. <?php echo number_format($order['total_amount'], 2); ?></td>
+                                            <td>
+                                                <?php
+                                                    $status_class = match($order['status']) {
+                                                        'pending' => 'bg-warning text-dark',
+                                                        'processing' => 'bg-info text-dark',
+                                                        'shipped' => 'bg-primary',
+                                                        'complete', 'delivered' => 'bg-success',
+                                                        'canceled', 'cancelled' => 'bg-danger',
+                                                        default => 'bg-secondary'
+                                                    };
+                                                    $status_text = ucfirst($order['status']);
+                                                ?>
+                                                <span class="badge px-3 py-2 fs-6 <?php echo $status_class; ?> shadow-sm" style="letter-spacing:0.5px;"><?php echo $status_text; ?></span>
+                                            </td>
+                                            <td>
+                                                <?php if ($order['status'] !== 'complete' && $order['status'] !== 'canceled'): ?>
+                                                <form method="POST" class="status-update-form d-flex align-items-center gap-2" data-order-id="<?php echo $order['order_id']; ?>">
+                                                    <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
+                                                    <select name="update_status" class="form-select form-select-sm status-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width:150px; border-width:2px; font-weight:500; appearance: auto;">
+                                                        <option value="">Update status...</option>
+                                                        <option value="complete">Mark as Complete</option>
+                                                        <option value="canceled">Cancel Order</option>
+                                                    </select>
+                                                </form>
+                                                <?php else: ?>
+                                                    <span class="text-white">No actions available</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="../order_confirmation.php?order_id=<?php echo $order['order_id']; ?>" 
+                                                   class="btn btn-link p-0 view-order-btn text-accent fs-5" 
+                                                   title="View Order Details"
+                                                   style="color: var(--accent-color,rgb(221, 69, 9)) !important;">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    <?php else: ?>
-                                        <?php foreach ($orders as $order): ?>
-                                            <tr>
-                                                <td><?php echo $order['order_id']; ?></td>
-                                                <td><?php echo date('Y-m-d', strtotime($order['order_date'])); ?></td>
-                                                <td>
-                                                    <?php
-                                                    $products = explode(', ', $order['product_names']);
-                                                    foreach ($products as $product) {
-                                                        echo '<div class="mb-1">' . htmlspecialchars($product) . '</div>';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td>Rs. <?php echo number_format($order['total_amount'], 2); ?></td>
-                                                <td>
-                                                    <?php
-                                                        $status_class = match($order['status']) {
-                                                            'pending' => 'bg-warning text-dark',
-                                                            'processing' => 'bg-info text-dark',
-                                                            'shipped' => 'bg-primary',
-                                                            'complete', 'delivered' => 'bg-success',
-                                                            'canceled', 'cancelled' => 'bg-danger',
-                                                            default => 'bg-secondary'
-                                                        };
-                                                        $status_text = ucfirst($order['status']);
-                                                    ?>
-                                                    <span class="badge <?php echo $status_class; ?>"><?php echo $status_text; ?></span>
-                                                </td>
-                                                <td>
-                                                    <?php if ($order['status'] !== 'complete' && $order['status'] !== 'canceled'): ?>
-                                                    <form method="POST" class="status-update-form" data-order-id="<?php echo $order['order_id']; ?>">
-                                                        <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
-                                                        <select name="update_status" class="form-select form-select-sm status-select" onchange="this.form.submit()">
-                                                            <option value="">Update status...</option>
-                                                            <option value="complete">Mark as Complete</option>
-                                                            <option value="canceled">Cancel Order</option>
-                                                        </select>
-                                                    </form>
-                                                    <?php else: ?>
-                                                        <span class="text-muted">No actions available</span>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href="../order_confirmation.php?order_id=<?php echo $order['order_id']; ?>" 
-                                                       class="btn btn-link p-0 view-order-btn" 
-                                                       title="View Order Details">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </form>
-                </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
         </div>
     </div>
