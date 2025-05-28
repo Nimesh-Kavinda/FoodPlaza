@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <h1 class="contact-title mb-3">Contact Us</h1>
+        <h1 class="contact-title mb-3">Contact Us..</h1>
         <p class="contact-desc mb-4">We'd love to hear from you! Whether you have a question about our food, need help with an order, or just want to share your experience, our team is here to help. Reach out to us using the form, or connect with us directly using the details below.</p>
         <ul class="contact-details list-unstyled mb-4">
           <li class="mb-2"><i class="fa-solid fa-phone me-2" style="color:var(--foodplaza-primary)"></i> <a href="tel:0715343747" class="contact-link">0715343747</a></li>
@@ -55,7 +55,7 @@
       </div>
       <div class="col-lg-6">
         <div class="contact-form-card p-4 shadow-lg rounded-4">
-          <form id="contactForm" novalidate>
+          <form id="contactForm" class="px-5 py-3" novalidate>
             <h3 class="text-center contact-title mb-3" style="color: var(--laflora-secondary); font-size: 2.2rem; font-weight: 300">Show some <i class="fas fa-heart text-danger"></i></h3>
             <div class="row mb-3">
               <div class="col-md-6 mb-3 mb-md-0">
