@@ -66,7 +66,7 @@ foreach ($products as $product): ?>
                     </button>                    <button type="button" class="btn btn-outline-secondary btn-sm w-100 add-to-wishlist-btn<?php echo $product['in_wishlist'] ? ' active' : ''; ?>"
                             data-product-id="<?php echo $product['id']; ?>">
                         <i class="fa fa-heart me-1<?php echo $product['in_wishlist'] ? ' text-danger' : ''; ?>"></i> 
-                        <?php echo $product['in_wishlist'] ? 'Remove from Wishlist' : 'Add to Wishlist'; ?>
+                        <?php echo $product['in_wishlist'] ? 'Remove' : 'Add to Wishlist'; ?>
                     </button>
                 </div>
             </div>

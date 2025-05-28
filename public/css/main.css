@@ -322,7 +322,7 @@ nav .username:hover{
 .testimonial-author {
   font-size: 18px;
   font-weight: 600;
-  color: var(--foodplaza-primary);
+  color: var(--foodplaza-secondary);
   text-align: center;
   margin: 0;
 }
@@ -1139,13 +1139,37 @@ body.signup-page {
   font-size: 0.9rem;
 }
 
-@media (max-width: 767px) {
-  #shopProductGrid .product-card {
-    min-height: 350px;
-  }
-  #shopProductGrid .product-card .card-img-top {
-    height: 180px;
-  }
+/* Shop search input placeholder color white */
+.shop-search-input::placeholder {
+  color: #fff !important;
+  opacity: 1;
+}
+.shop-search-input {
+  color: #fff !important;
+  background: var(--foodplaza-bg) !important;
+}
+
+/* Product card button fixed size and wishlist button color */
+#shopProductGrid .btn,
+#shopProductGrid .add-to-cart-btn,
+#shopProductGrid .add-to-wishlist-btn {
+  min-width: 120px;
+  max-width: 140px;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  text-align: center;
+  margin: 0 0.2rem;
+}
+#shopProductGrid .add-to-wishlist-btn {
+  background: var(--foodplaza-secondary) !important;
+  color: #fff !important;
+  border: none !important;
+  transition: background 0.2s;
+}
+#shopProductGrid .add-to-wishlist-btn:hover {
+  background: #388e3c !important;
+  color: #fff !important;
 }
 
 /* --- DARK THEME OVERRIDES FOR ALL SECTIONS & COMPONENTS --- */

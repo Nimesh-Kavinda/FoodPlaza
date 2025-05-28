@@ -112,7 +112,7 @@ function performWishlistAction(productId, button, isRemoval = false) {
                 // Update button state for toggle buttons
                 if (data.action === 'added') {
                     button.classList.add('active');
-                    button.innerHTML = `<i class="fa fa-heart me-1 text-danger"></i> Remove from Wishlist`;
+                    button.innerHTML = `<i class="fa fa-heart me-1 text-danger"></i> Remove`;
 
                     // Show success message for add action
                     Swal.fire({
