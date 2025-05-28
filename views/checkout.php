@@ -135,22 +135,23 @@
             </div>
           <?php endif; ?>
           
-          <form method="post" action="">            <div class="mb-3">
+          <form method="post" action="" class="checkout-form p-3">
+            <div class="mb-3">
               <label for="checkoutPhone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="checkoutPhone" name="phone" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ''; ?>" required>
+              <input type="tel" class="form-control bg-dark text-light border-accent rounded-3 shadow-sm" id="checkoutPhone" name="phone" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ''; ?>" required>
             </div>
             <div class="row">
               <div class="col-12 mb-3">
                 <label for="street" class="form-label">Street Address</label>
-                <input type="text" class="form-control" id="street" name="street" value="<?php echo isset($_POST['street']) ? htmlspecialchars($_POST['street']) : ''; ?>" required>
+                <input type="text" class="form-control bg-dark text-light border-accent rounded-3 shadow-sm" id="street" name="street" value="<?php echo isset($_POST['street']) ? htmlspecialchars($_POST['street']) : ''; ?>" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ''; ?>" required>
+                <input type="text" class="form-control bg-dark text-light border-accent rounded-3 shadow-sm" id="city" name="city" value="<?php echo isset($_POST['city']) ? htmlspecialchars($_POST['city']) : ''; ?>" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="province" class="form-label">Province</label>
-                <select class="form-select" id="province" name="province" required>
+                <select class="form-select bg-dark text-light border-accent rounded-3 shadow-sm" id="province" name="province" required style="appearance:auto;">
                   <option value="" disabled <?php echo !isset($_POST['province']) ? 'selected' : ''; ?>>Select Province</option>
                   <option value="Central" <?php echo (isset($_POST['province']) && $_POST['province'] === 'Central') ? 'selected' : ''; ?>>Central Province</option>
                   <option value="Eastern" <?php echo (isset($_POST['province']) && $_POST['province'] === 'Eastern') ? 'selected' : ''; ?>>Eastern Province</option>
@@ -165,16 +166,16 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="postalCode" class="form-label">Postal Code</label>
-                <input type="text" class="form-control" id="postalCode" name="postal_code" pattern="[0-9]{5}" title="Please enter a valid 5-digit postal code" value="<?php echo isset($_POST['postal_code']) ? htmlspecialchars($_POST['postal_code']) : ''; ?>" required>
+                <input type="text" class="form-control bg-dark text-light border-accent rounded-3 shadow-sm" id="postalCode" name="postal_code" pattern="[0-9]{5}" title="Please enter a valid 5-digit postal code" value="<?php echo isset($_POST['postal_code']) ? htmlspecialchars($_POST['postal_code']) : ''; ?>" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="country" class="form-label">Country</label>
-                <input type="text" class="form-control" id="country" name="country" value="Sri Lanka" readonly>
+                <input type="text" class="form-control bg-dark text-light border-accent rounded-3 shadow-sm" id="country" name="country" value="Sri Lanka" readonly>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label" for="paymentMethod">Payment Method</label>
-              <select class="form-select" id="paymentMethod" name="payment_method" required>
+              <select class="form-select bg-dark text-light border-accent rounded-3 shadow-sm" id="paymentMethod" name="payment_method" required style="appearance:auto;">
                 <option value="cod" <?php echo (isset($_POST['payment_method']) && $_POST['payment_method'] === 'cod') ? 'selected' : ''; ?>>Cash on Delivery</option>
                 <option value="pickup" <?php echo (isset($_POST['payment_method']) && $_POST['payment_method'] === 'pickup') ? 'selected' : ''; ?>>Pickup from Shop</option>
               </select>
@@ -234,5 +235,51 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JS -->
 <script src="../public/js/main.js"></script>
+<style>
+.checkout-form-card {
+  background: var(--foodplaza-surface, #23262f);
+  color: var(--foodplaza-dark, #fff);
+  border-radius: 18px;
+  border: 1.5px solid var(--foodplaza-border, #282c37);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+}
+.checkout-form .form-label {
+  color: var(--foodplaza-primary, #ff5722);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.checkout-form .form-control,
+.checkout-form .form-select {
+  background: var(--foodplaza-bg, #181a20) !important;
+  color: var(--foodplaza-dark, #fff) !important;
+  border: 1.5px solid var(--foodplaza-accent, #ffb300) !important;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.checkout-form .form-control:focus,
+.checkout-form .form-select:focus {
+  border-color: var(--foodplaza-primary, #ff5722) !important;
+  box-shadow: 0 0 0 2px var(--foodplaza-primary, #ff5722, 0.2);
+}
+.checkout-form .form-select {
+  appearance: auto;
+}
+.btn-foodplaza {
+  background: var(--foodplaza-primary, #ff5722);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-foodplaza:hover, .btn-foodplaza:focus {
+  background: var(--foodplaza-accent, #ffb300);
+  color: var(--foodplaza-bg, #181a20);
+}
+</style>
 </body>
 </html>
