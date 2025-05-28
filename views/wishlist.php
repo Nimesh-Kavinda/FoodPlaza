@@ -127,8 +127,8 @@
             <?php if (empty($wishlist_items)): ?>
                 <div class="col-12">
                     <div class="text-center py-5">
-                        <i class="fas fa-heart fa-3x text-muted mb-3"></i>
-                        <h4 class="text-muted">Your wishlist is empty</h4>
+                        <i class="fas fa-heart fa-3x text-white mb-3"></i>
+                        <h4 class="text-white">Your wishlist is empty</h4>
                         <a href="shop.php" class="btn btn-foodplaza mt-3">Order Food</a>
                     </div>
                 </div>

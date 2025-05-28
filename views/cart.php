@@ -41,7 +41,7 @@
                     icon: '{$message_type}',
                     title: '{$_SESSION['cart_message']}',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1500,
                 });
             });
         </script>";
