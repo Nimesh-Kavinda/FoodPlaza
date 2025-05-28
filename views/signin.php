@@ -17,7 +17,7 @@
 </head>
 <body class="signin-page">
   <div class="signin-card">
-   <a href="../index.html" style="text-decoration: none;"> <div class="signin-logo">Food Plaza <i class="fa-solid fa-utensils"></i></div> </a>
+   <a href="../index.html" style="text-decoration: none;"> <div class="signin-logo" style="color: #fff !important;">Food Plaza <i class="fa-solid fa-utensils"></i></div> </a>
     <div class="signin-title">Sign In to Your Account</div>
     <?php
         if (isset($_GET['success'])) {
@@ -25,7 +25,7 @@
         }
     ?>
 
-    <form method="post" action="../controller/sign_in_process.php">
+    <form method="post" action="../controller/sign_in_process.php" class="p-4" style="border-radius: 25px;">
       <div class="mb-3">
         <label for="signinEmail" class="form-label">Email address</label>
         <input type="email" class="form-control" id="signinEmail" name="email" required autofocus>
@@ -37,7 +37,7 @@
       <button class="btn btn-foodplaza w-100 py-2 mt-2" type="submit">Sign In</button>
     </form>
     <div class="text-center mt-4">
-      <span class="text-muted">Don't have an account?</span>
+      <span class="text-white">Don't have an account?</span>
       <a href="./signup.php" class="signin-link ms-1">Sign up</a>
     </div>
   </div>
