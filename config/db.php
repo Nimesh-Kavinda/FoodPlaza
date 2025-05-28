@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'laflora';
+$dbname = 'foodplaza';
 $username = 'root';
 $password = '';
 
