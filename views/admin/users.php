@@ -90,16 +90,16 @@ if ($stmt) {
                                     <td>
                                         <form method="POST" class="d-inline">
                                             <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['id']) ?>">
-                                            <select name="user_type" class="form-select form-select-sm user-type-select" onchange="this.form.submit()">
+                                            <select name="user_type" class="form-select form-select-sm user-type-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width: 120px; border-width: 2px; font-weight: 500; appearance: auto;" onchange="this.form.submit()">
                                                 <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>User</option>
                                                 <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
                                             </select>
                                         </form>
                                     </td>
                                     <td class="text-center">
-                                        <form method="POST" class="d-inline delete-user-form">
+                                        <form method="POST" class="d-inline delete-user-form" style="margin:0;">
                                             <input type="hidden" name="delete_user_id" value="<?= htmlspecialchars($user['id']) ?>">
-                                            <button type="button" class="btn btn-sm btn-outline-danger delete-user-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger delete-user-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -112,5 +112,30 @@ if ($stmt) {
     </div>
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.delete-user-form').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'This user will be permanently deleted!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#ff5722',
+                    cancelButtonColor: '#23262f',
+                    background: '#181a20',
+                    color: '#fff',
+                    confirmButtonText: 'Yes, delete user!'
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+    </script>
 </body>
 </html>

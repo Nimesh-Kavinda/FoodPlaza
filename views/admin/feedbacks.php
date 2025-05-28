@@ -121,16 +121,16 @@ if ($stmt) {
                                     <td>
                                         <form method="POST" class="d-inline">
                                             <input type="hidden" name="feedback_id" value="<?= htmlspecialchars($feedback['f_id']) ?>">
-                                            <select name="feedback_status" class="form-select form-select-sm user-type-select" onchange="this.form.submit()">
+                                            <select name="feedback_status" class="form-select form-select-sm user-type-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width: 120px; border-width: 2px; font-weight: 500; appearance: auto;" onchange="this.form.submit()">
                                                 <option value="inactive" <?= $feedback['status'] === 'inactive' ? 'selected' : '' ?>>Inactive</option>
                                                 <option value="active" <?= $feedback['status'] === 'active' ? 'selected' : '' ?>>Active</option>
                                             </select>
                                         </form>
                                     </td>
                                     <td class="text-center">
-                                        <form method="POST" class="d-inline delete-feedback-form">
+                                        <form method="POST" class="d-inline delete-feedback-form" style="margin:0;">
                                             <input type="hidden" name="delete_feedback_id" value="<?= htmlspecialchars($feedback['f_id']) ?>">
-                                            <button type="button" class="btn btn-sm btn-outline-danger delete-feedback-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger delete-feedback-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -151,5 +151,30 @@ if ($stmt) {
     </div>
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.delete-feedback-form').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This feedback will be permanently deleted!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ff5722',
+                cancelButtonColor: '#23262f',
+                background: '#181a20',
+                color: '#fff',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+});
+</script>
 </body>
 </html>

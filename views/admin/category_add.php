@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category_name'])) {
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <div class="card admin-card product-add-card shadow-sm border-0 p-4">
+                        <div class="card admin-card product-add-card shadow-sm border-0 p-4" style="background-color: var(--foodplaza-surface);">
 
                             <form method="post" action="">
                                 <?php if (!empty($success)): ?>
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category_name'])) {
                                 <?php endif; ?>
                                 <div class="mb-3">
                                     <label for="categoryName" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" id="categoryName" name="category_name" required>
+                                    <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Type category name" required>
                                 </div>
                                 <div class="mt-4 text-end">
                                     <button type="submit" class="btn btn-theme px-5"><i class="fas fa-save me-2"></i>Save Category</button>

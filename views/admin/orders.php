@@ -123,8 +123,8 @@
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
                                         <td><?php echo $order['order_id']; ?></td>                                        <td class="customer-name"><?php echo htmlspecialchars($order['customer_name']); ?></td>
-                                        <td><span class="text-muted"><?php echo htmlspecialchars($order['email']); ?></span></td>
-                                        <td><span class="text-muted"><?php echo date('M j, Y', strtotime($order['order_date'])); ?></span></td>
+                                        <td><span class="text-white"><?php echo htmlspecialchars($order['email']); ?></span></td>
+                                        <td><span class="text-white"><?php echo date('M j, Y', strtotime($order['order_date'])); ?></span></td>
                                         <td class="items-column">
                                             <?php 
                                             $products = explode(', ', $order['product_names']);
@@ -150,23 +150,26 @@
                                         </td>
                                         <td>
                                             <?php if (!in_array($order['status'], ['complete', 'canceled'])): ?>
-                                            <form method="POST" class="status-update-form" data-order-id="<?php echo $order['order_id']; ?>">
+                                            <form method="POST" class="status-update-form d-inline-block" data-order-id="<?php echo $order['order_id']; ?>">
                                                 <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
-                                                <select name="update_status" class="form-select form-select-sm status-select">
+                                                <select name="update_status" class="form-select form-select-sm status-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width: 150px; border-width: 2px; font-weight: 500; appearance: auto;" onchange="this.form.submit()">
                                                     <option value="">Update status...</option>
                                                     <option value="processing" <?php echo $order['status'] === 'processing' ? 'selected' : ''; ?>>Processing</option>
                                                     <option value="shipped" <?php echo $order['status'] === 'shipped' ? 'selected' : ''; ?>>Shipped</option>
                                                 </select>
                                             </form>
                                             <?php else: ?>
-                                                <span class="text-muted">No actions available</span>
+                                                <span class="text-white">No actions available</span>
                                             <?php endif; ?>
                                         </td>
-                                        <td class="text-center">                                            <button type="button" class="btn btn-sm btn-outline-danger delete-order-btn" 
-                                                    data-order-id="<?php echo $order['order_id']; ?>" 
-                                                    title="Delete Order">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                        <td class="text-center">
+                                            <form method="POST" class="d-inline-block delete-order-form" style="margin:0;">
+                                                <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
+                                                <input type="hidden" name="delete_order" value="1">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger delete-order-btn" title="Delete Order">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -280,25 +283,26 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('form').forEach(function(form) {
-                if (form.querySelector('input[name="delete_order"]')) {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: 'You won\'t be able to revert this!',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#e75480',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes, delete it!'
-                        }).then(function(result) {
-                            if (result.isConfirmed) {
-                                form.submit();
-                            }
-                        });
+            // SweetAlert2 for delete confirmation
+            document.querySelectorAll('.delete-order-form').forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'You won\'t be able to revert this!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#ff5722',
+                        cancelButtonColor: '#23262f',
+                        background: '#181a20',
+                        color: '#fff',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
                     });
-                }
+                });
             });
         });
     </script>

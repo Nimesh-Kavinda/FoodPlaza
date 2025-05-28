@@ -50,9 +50,9 @@ body, .admin-bg, .admin-sidebar {
     box-shadow: 0 2px 8px 0 rgba(255,87,34,0.08);
 }
 .admin-title {
-    color: var(--foodplaza-primary);
+    color: var(--foodplaza-secondary);
     font-size: 2.2rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }

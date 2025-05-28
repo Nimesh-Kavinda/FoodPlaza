@@ -144,7 +144,7 @@ session_start();
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label">Category</label>
-                                    <select class="form-select" id="category" name="category" required>
+                                    <select class="form-select bg-dark text-light border-accent shadow-sm rounded-3" id="category" name="category" required style="min-width: 180px; border-width: 2px; font-weight: 500; appearance: auto;">
                                         <option value="">Select Category</option>
                                         <?php foreach ($categories as $cat): ?>
                                             <option value="<?php echo $cat['id']; ?>" <?php if (($edit_product['category_id'] ?? 0) == $cat['id']) echo 'selected'; ?>><?php echo htmlspecialchars($cat['category_name']); ?></option>

@@ -47,14 +47,14 @@ include '../../config/db.php';
             <?php include_once('./includes/admin_nav.php'); ?>
             <!-- Main Content -->
             <main class="col-md-9 col-lg-10 ms-sm-auto px-md-5 py-4">
-                <h1 class="mb-4 admin-title">Welcome, Admin!</h1>
+                <h1 class="mb-4 admin-title text-capitalize">Welcome, <?php echo $_SESSION['name']; ?>..</h1>
                 <div class="row g-4 mb-4">
                     <div class="col-md-6 col-lg-3">
                         <div class="card admin-card shadow-sm border-0">
                             <div class="card-body text-center">
                                 <i class="fas fa-box-open fa-2x mb-2 text-primary"></i>
                                 <h5 class="card-title mb-1">Products</h5>
-                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($products); ?></p>
+                                <p class="card-text text-white fs-5 fw-bold"><?php echo count($products); ?></p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-tags fa-2x mb-2 text-success"></i>
                                 <h5 class="card-title mb-1">Categories</h5>
-                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($categories); ?></p>
+                                <p class="card-text text-white fs-5 fw-bold"><?php echo count($categories); ?></p>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-shopping-cart fa-2x mb-2 text-warning"></i>
                                 <h5 class="card-title mb-1">Orders</h5>
-                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($orders); ?></p>
+                                <p class="card-text text-white fs-5 fw-bold"><?php echo count($orders); ?></p>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-users fa-2x mb-2 text-danger"></i>
                                 <h5 class="card-title mb-1">Users</h5>
-                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($users); ?></p>
+                                <p class="card-text text-white fs-5 fw-bold"><?php echo count($users); ?></p>
                             </div>
                         </div>
                     </div>
