@@ -38,6 +38,7 @@ include '../../config/db.php';
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./public/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid min-vh-100 admin-bg">
@@ -53,7 +54,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-box-open fa-2x mb-2 text-primary"></i>
                                 <h5 class="card-title mb-1">Products</h5>
-                                <p class="card-text text-muted"><?php echo count($products); ?></p>
+                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($products); ?></p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +63,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-tags fa-2x mb-2 text-success"></i>
                                 <h5 class="card-title mb-1">Categories</h5>
-                                <p class="card-text text-muted"><?php echo count($categories); ?></p>
+                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($categories); ?></p>
                             </div>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-shopping-cart fa-2x mb-2 text-warning"></i>
                                 <h5 class="card-title mb-1">Orders</h5>
-                                <p class="card-text text-muted"><?php echo count($orders); ?></p>
+                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($orders); ?></p>
                             </div>
                         </div>
                     </div>
@@ -80,14 +81,13 @@ include '../../config/db.php';
                             <div class="card-body text-center">
                                 <i class="fas fa-users fa-2x mb-2 text-danger"></i>
                                 <h5 class="card-title mb-1">Users</h5>
-                                <p class="card-text text-muted"><?php echo count($users); ?></p>
+                                <p class="card-text text-muted fs-5 fw-bold"><?php echo count($users); ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Add more dashboard widgets or charts as needed -->
                 <div class="mt-5">
-                    <h2 class="h4 mb-3">Quick Links</h2>
+                    <h2 class="h4 mb-3 text-accent">Quick Links</h2>
                     <a href="products.php" class="btn btn-theme me-2 mb-2"><i class="fas fa-box-open me-1"></i> Manage Products</a>
                     <a href="categories.php" class="btn btn-theme me-2 mb-2"><i class="fas fa-tags me-1"></i> Manage Categories</a>
                     <a href="orders.php" class="btn btn-theme me-2 mb-2"><i class="fas fa-shopping-cart me-1"></i> Manage Orders</a>

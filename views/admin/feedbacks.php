@@ -47,26 +47,22 @@ if ($stmt) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Management - LaFlora</title>
+    <title>Feedback Management - Food Plaza</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./public/css/main.css">
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <div class="container-fluid min-vh-100 admin-bg">
         <div class="row h-100">
+            <!-- Sidebar -->
             <?php include_once('./includes/admin_nav.php'); ?>
             <!-- Main Content -->
             <main class="col-md-9 col-lg-10 ms-sm-auto px-md-5 py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1 class="admin-title mb-0">Feedback Management</h1>
-                </div>
-                
+                <h1 class="admin-title mb-4">Feedback Management</h1>
                 <?php if ($success): ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <?= htmlspecialchars($success) ?>
@@ -78,17 +74,16 @@ if ($stmt) {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php endif; ?>
-                
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle bg-white user-table">
-                        <thead class="table-light">
+                    <table class="table table-bordered table-hover align-middle category-table">
+                        <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>User Name</th>
-                                <th>User Email</th>
+                                <th>User</th>
+                                <th>Email</th>
                                 <th>Message</th>
                                 <th>Status</th>
-                                <th class="text-center">Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,33 +149,7 @@ if ($stmt) {
             </main>
         </div>
     </div>
-
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.delete-feedback-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const form = btn.closest('form');
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'You won\'t be able to revert this!',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#e75480',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
-            });
-        });
-    });
-    </script>
 </body>
 </html>

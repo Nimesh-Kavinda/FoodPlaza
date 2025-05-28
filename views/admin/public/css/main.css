@@ -6,6 +6,7 @@
   --foodplaza-dark: #fff;
   --foodplaza-surface: #23262f;
   --foodplaza-border: #282c37;
+  --foodplaza-accent: #ffb300;
 }
 
 body, .admin-bg, .admin-sidebar {
@@ -13,68 +14,107 @@ body, .admin-bg, .admin-sidebar {
   color: var(--foodplaza-dark) !important;
 }
 .admin-bg {
-    background: linear-gradient(to right, #ffe0b2, #e1f5fe);
+    background: var(--foodplaza-bg) !important;
     min-height: 100vh;
 }
 .admin-sidebar {
-    background: linear-gradient(to bottom, #ff7043, #a5d6a7) !important;
+    background: var(--foodplaza-surface) !important;
     color: #fff;
     min-height: 100vh;
     padding-top: 30px;
     padding-bottom: 30px;
+    border-right: 2px solid var(--foodplaza-border);
 }
 .admin-brand {
-    font-family: 'Brush Script MT', cursive;
-    font-size: 28px;
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
     color: var(--foodplaza-primary) !important;
     letter-spacing: 1px;
+    font-weight: bold;
 }
 .admin-nav-link {
     color: #fff !important;
-    border-radius: 0;
+    border-radius: 8px;
     padding: 12px 20px;
     margin: 2px 0;
     transition: all 0.3s;
     font-weight: 500;
+    font-size: 1.08rem;
 }
 .admin-nav-link.active, .admin-nav-link:focus, .admin-nav-link:hover {
-    background-color: rgba(255,255,255,0.18) !important;
-    border-left: 4px solid #fff;
+    background-color: var(--foodplaza-primary) !important;
     color: #fff !important;
+    border-left: 4px solid var(--foodplaza-accent);
+    box-shadow: 0 2px 8px 0 rgba(255,87,34,0.08);
 }
 .admin-title {
     color: var(--foodplaza-primary);
     font-size: 2.2rem;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ffccbc;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 .admin-card {
-    border-radius: 16px;
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: var(--foodplaza-surface);
+    color: var(--foodplaza-dark);
+    border-radius: 18px;
+    border: 1px solid var(--foodplaza-border);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .admin-card:hover {
     transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 24px rgba(233,30,99,0.10);
+    box-shadow: 0 8px 32px 0 rgba(255,87,34,0.10);
 }
 .btn-theme {
     background: var(--foodplaza-primary);
     color: #fff;
-    border-radius: 25px;
-    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     border: none;
-    font-weight: 500;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
 }
 .btn-theme:hover, .btn-theme:focus {
-    background: var(--foodplaza-secondary);
-    color: #fff;
+    background: var(--foodplaza-accent);
+    color: var(--foodplaza-bg);
 }
+.table, .table-bordered, .table-hover, .table-light, .table-responsive, .category-table {
+    background: var(--foodplaza-surface) !important;
+    color: var(--foodplaza-dark) !important;
+    border-color: var(--foodplaza-border) !important;
+}
+.table th, .table thead th {
+    background: var(--foodplaza-primary) !important;
+    color: #fff !important;
+    border-color: var(--foodplaza-border) !important;
+}
+.table td, .table tbody td {
+    background: var(--foodplaza-surface) !important;
+    color: var(--foodplaza-dark) !important;
+    border-color: var(--foodplaza-border) !important;
+}
+.table-hover tbody tr:hover {
+    background: var(--foodplaza-secondary) !important;
+    color: #fff !important;
+}
+.form-control, .form-select {
+    background: var(--foodplaza-bg) !important;
+    color: var(--foodplaza-dark) !important;
+    border: 1.5px solid var(--foodplaza-border) !important;
+    border-radius: 8px;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--foodplaza-primary) !important;
+    box-shadow: 0 0 0 2px var(--foodplaza-primary, #ff5722, 0.2);
+}
+::-webkit-input-placeholder { color: #eee !important; }
+::-moz-placeholder { color: #eee !important; }
+:-ms-input-placeholder { color: #eee !important; }
+::placeholder { color: #eee !important; }
+
 /* Product Add Form Styles */
 .product-add-card {
     border-radius: 16px;
