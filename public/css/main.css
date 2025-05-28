@@ -297,6 +297,11 @@ nav .username:hover{
   background: var(--foodplaza-surface) !important;
   color: var(--foodplaza-dark);
   border: 1.5px solid var(--foodplaza-border);
+  min-width: 320px;
+  min-height: 300px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .testimonial-card:hover {
   transform: translateY(-10px);

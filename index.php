@@ -127,7 +127,7 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero-section" id="home">
+  <section class="hero-section text-center p-5" id="home">
     <div class="container">
       <h1>Welcome to Food Plaza</h1>
       <p class="mb-4">Order the tastiest, freshest food online. Fast delivery, delicious meals, and a flavor for every craving.</p>
@@ -166,6 +166,8 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </section>
 
+  <section class="hero-section py-3"></section>
+
   <!-- Products Section -->
   <section id="products" class="py-5">
     <div class="container">
@@ -199,10 +201,11 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </section>
 
   <!-- Contact Section -->
-  <section id="testimonials" class="testimonial-section">
+  <section id="testimonials" class="testimonial-section py-5">
     <div class="container">
       <div class="section-title">
-        <h2>What Our Customers Say</h2>
+        <h2>What Our Customers Say...</h2>
+       <p>At Food Plaza, we value our customers and their feedback</p>
         <p>Discover why thousands of customers love our floral arrangements and exceptional service</p>
       </div>
 
@@ -437,8 +440,10 @@ if (urlParams.get('login') === 'success') {
         title: 'Welcome!',
         text: 'You have successfully logged in.',
         showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true
+        timer: 1500,
+        timerProgressBar: true,
+        background: '#1e1e2f', // Dark background
+        color: '#ffffff', // Light text
     }).then((result) => {
         // Clean the URL by removing the login parameter
         const url = new URL(window.location);
@@ -447,6 +452,7 @@ if (urlParams.get('login') === 'success') {
     });
 }
 
+
 // Check if logout was successful
 if (urlParams.get('logout') === 'success') {
     Swal.fire({
@@ -454,8 +460,10 @@ if (urlParams.get('logout') === 'success') {
         title: 'Goodbye!',
         text: 'You have been successfully logged out.',
         showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true
+        timer: 1500,
+        timerProgressBar: true,
+          background: '#1e1e2f', // Dark background
+        color: '#ffffff', // Light text
     }).then((result) => {
         // Clean the URL by removing the logout parameter
         const url = new URL(window.location);
