@@ -114,7 +114,7 @@
                                                 <?php if ($order['status'] !== 'complete' && $order['status'] !== 'canceled'): ?>
                                                 <form method="POST" class="status-update-form d-flex align-items-center gap-2" data-order-id="<?php echo $order['order_id']; ?>">
                                                     <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
-                                                    <select name="update_status" class="form-select form-select-sm status-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width:150px; border-width:2px; font-weight:500; appearance: auto;">
+                                                    <select name="update_status" class="form-select form-select-sm status-select bg-dark text-light border-accent shadow-sm rounded-3" style="min-width:150px; border-width:2px; font-weight:500; appearance: auto;" onchange="this.form.submit()">
                                                         <option value="">Update status...</option>
                                                         <option value="complete">Mark as Complete</option>
                                                         <option value="canceled">Cancel Order</option>
@@ -145,65 +145,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.status-update-form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const orderId = form.dataset.orderId;
-            const newStatus = formData.get('update_status');
-            
-            if (!newStatus) return; // Don't submit if no status selected
-            
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.ok)
-            .then(success => {
-                if (success) {
-                    // Update the status badge
-                    const statusBadge = form.closest('tr').querySelector('.badge');
-                    let newClass = '';
-                    let statusText = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
-                    
-                    switch(newStatus) {
-                        case 'pending':
-                            newClass = 'bg-warning text-dark';
-                            break;
-                        case 'processing':
-                            newClass = 'bg-info text-dark';
-                            break;
-                        case 'shipped':
-                            newClass = 'bg-primary';
-                            break;
-                        case 'complete':
-                        case 'delivered':
-                            newClass = 'bg-success';
-                            break;
-                        case 'canceled':
-                        case 'cancelled':
-                            newClass = 'bg-danger';
-                            break;
-                        default:
-                            newClass = 'bg-secondary';
-                    }
-                    
-                    statusBadge.className = 'badge ' + newClass;
-                    statusBadge.textContent = statusText;
-                    
-                    // If order is complete or canceled, replace form with "No actions available"
-                    if (newStatus === 'complete' || newStatus === 'canceled') {
-                        form.replaceWith(document.createTextNode('No actions available'));
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Error updating status:', error);
-                alert('Failed to update order status. Please try again.');
-            });
-        });
-    });
-});
-</script>
