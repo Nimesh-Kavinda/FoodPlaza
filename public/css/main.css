@@ -52,8 +52,9 @@ nav .username:hover{
 
 .hero-section {
   /* background: linear-gradient(120deg, #23262f 0%, #181a20 100%); */
-  background: url('../img/home/hero_cover.jpg');
+  background: url('../img/home/hero_cover.jpg') rgba(6, 3, 4, 0.5);
   background-size: cover;
+  background-position: center;
   /* fallback for image overlay */
   background-blend-mode: darken;
   color: var(--foodplaza-dark);

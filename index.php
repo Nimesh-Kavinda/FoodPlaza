@@ -129,7 +129,7 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <!-- Hero Section -->
   <section class="hero-section text-center p-5" id="home">
     <div class="container">
-      <h1>Welcome to Food Plaza</h1>
+      <h1 class="text-white mb-4">Welcome to Food Plaza</h1>
       <p class="mb-4">Order the tastiest, freshest food online. Fast delivery, delicious meals, and a flavor for every craving.</p>
       <a href="./views/shop.php" class="btn btn-foodplaza btn-lg">Order Now</a>
     </div>
@@ -206,7 +206,7 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="section-title">
         <h2>What Our Customers Say...</h2>
        <p>At Food Plaza, we value our customers and their feedback</p>
-        <p>Discover why thousands of customers love our floral arrangements and exceptional service</p>
+        <p>We take your feedback seriously and use it to improve our services</p>
       </div>
 
       <div class="testimonial-slider">

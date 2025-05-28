@@ -29,7 +29,7 @@
   <div class="container">
     <div class="row align-items-center g-4">
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <h1 class="about-title mb-3">About Food Plaza</h1>
+        <h1 class="about-title mb-3">About Food Plaza..</h1>
         <p class="about-desc mb-4">
           Welcome to Food Plaza, your premier destination for delicious meals and heartfelt service. Founded with a passion for spreading joy and flavor, Food Plaza has become a trusted name for online food delivery. Our journey began with a simple belief: every occasion deserves to be celebrated with the tastiest, freshest food.<br><br>
           At Food Plaza, we source our ingredients directly from sustainable suppliers, ensuring every dish is bursting with flavor and quality. Our talented chefs handcraft each meal with meticulous attention to detail, blending creativity and care to make every order unique. Whether you’re celebrating a birthday, anniversary, or simply want to enjoy a great meal, we have the perfect dish for you.<br><br>
