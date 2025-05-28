@@ -1728,5 +1728,41 @@ blockquote {
 body,
 html {
   color: #fff !important;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* SweetAlert2 custom theme for Wishlist and Cart pages */
+.swal2-popup {
+  background: #23262f !important;
+  color: #fff !important;
+  border-radius: 1.2rem !important;
+}
+.swal2-title, .swal2-html-container {
+  color: #fff !important;
+}
+.swal2-confirm {
+  background: var(--foodplaza-primary) !important;
+  color: #fff !important;
+  border-radius: 2rem !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: none !important;
+  box-shadow: 0 2px 8px #ff572244;
+}
+.swal2-confirm:focus, .swal2-confirm:hover {
+  background: var(--foodplaza-secondary) !important;
+  color: #fff !important;
+}
+.swal2-cancel {
+  background: var(--foodplaza-secondary) !important;
+  color: #fff !important;
+  border-radius: 2rem !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: none !important;
+  margin-left: 0.5rem;
+}
+.swal2-cancel:focus, .swal2-cancel:hover {
+  background: var(--foodplaza-primary) !important;
+  color: #fff !important;
 }

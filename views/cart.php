@@ -92,8 +92,8 @@
                 <div class="cart-list" id="cartList">
                     <?php if (empty($cart_items)): ?>
                         <div class="text-center py-5">
-                            <i class="fas fa-cart-shopping fa-3x text-muted mb-3"></i>
-                            <h4 class="text-muted">Your cart is empty</h4>
+                            <i class="fas fa-cart-shopping fa-3x text-white mb-3"></i>
+                            <h4 class="text-white">Your cart is empty</h4>
                             <a href="shop.php" class="btn btn-foodplaza mt-3">
                                 <i class="fas fa-shopping-bag me-2"></i>Order More Food
                             </a>
