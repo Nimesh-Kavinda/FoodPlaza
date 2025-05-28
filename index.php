@@ -166,7 +166,7 @@ $feedbacks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </section>
 
-  <section class="hero-section py-3"></section>
+   <section class="py-2" style="background-color: var(--foodplaza-surface);"></section>
 
   <!-- Products Section -->
   <section id="products" class="py-5">

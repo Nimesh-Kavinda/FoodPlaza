@@ -44,7 +44,7 @@
         </ul>
         <a href="./shop.php" class="btn btn-foodplaza btn-lg">Order Food</a>
       </div>
-      <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="col-lg-6 d-flex d-none d-md-block align-items-center justify-content-center">
         <div class="about-img-wrapper about-img-single-wrapper w-100">
           <img src="../public/img/about/about_cover.jpg" alt="Food Plaza" class="about-img about-img-animate about-img-single">
         </div>
